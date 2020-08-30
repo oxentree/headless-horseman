@@ -2,19 +2,24 @@
 Uses puppeteer and the latest Chrome stable build to reliably parse JavaScript-heavy web pages.
 
 It simply queries an item (page, with a unique id) for a number of targets, each of the targets should have a scope and a selector.
+
 It does not challenge parsed results against regular expressions or stuff like that, that task should be performed by the consumer of the results.
 
 # Request payload 
+`item.id` can be any string, but it needs to be available for when you process the results
+
+`target.scope` should be available as an unique identifier across an item, so you can identify it within the result set, just like `item.id`
+
 ```json
 {
     "data": {},
     "items": [
         {
             "url": "http://example.com",
-            "id": "example.com", // can be anything, this needs to be available for when you process the results 
+            "id": "example.com",
             "targets": [
                 {
-                    "scope": "title", // scope should be unique across item, otherwise, it may not work as you expect it to
+                    "scope": "title",
                     "selector": "h1"
                 }
             ]
