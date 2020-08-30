@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  node: 
+    build: 
+      context: .
+      args: 
+        ENV: prod
+    ports:
+     - 8080:8080
+    command: npm run build
+    cap_add:
+      - "SYS_ADMIN"

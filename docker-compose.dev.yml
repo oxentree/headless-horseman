@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  node: 
+    build: 
+      context: .
+      args: 
+        ENV: dev
+    ports:
+     - 8080:8080
+    volumes:
+     - ./src:/usr/node/src
+    command: npm run watch
+    cap_add:
+      - "SYS_ADMIN"
